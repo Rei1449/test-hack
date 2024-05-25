@@ -1,17 +1,10 @@
-FROM python:3.9-slim AS build
+FROM python:3.9-slim
 
 WORKDIR /app/backend
 
 COPY requirements.txt /app/backend/requirements.txt
+
 RUN pip install --no-cache-dir --upgrade -r /app/backend/requirements.txt
-
-# 開発用環境
-FROM python:3.9-slim AS dev
-
-COPY --from=build /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
-COPY --from=build /usr/local/bin /usr/local/bin
-
-WORKDIR /app/backend
 
 COPY src /app/backend/src
 

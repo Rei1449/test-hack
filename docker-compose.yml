@@ -22,7 +22,6 @@ services:
     build:
       context: ./backend/
       dockerfile: Dockerfile
-      target: dev
     container_name: geekhackvol10_backend
     ports:
       - 8080:8080
